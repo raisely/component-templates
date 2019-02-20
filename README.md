@@ -1,10 +1,14 @@
-# component-templates
-Templates for custom Raisely components
+# Raisely Custom Component Templates
+Templates for Raisely's Custom Component structure
 
 ## Templates
 
-### Basic Component
+### [Basic Component](basic-component)
 
-### Basic Stateful Component
+### [Basic Stateful Component](basic-stateful-component)
 
-### Integration Component
+### Component with Raisely Integrations
+
+### Component with Raisely Api
+
+### Signup Form
