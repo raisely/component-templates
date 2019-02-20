@@ -9,6 +9,8 @@ Templates for Raisely's Custom Component structure
 
 ### Component with Raisely Integrations
 
+### Component with Page Actions
+
 ### Component with Raisely Api
 
 ### Signup Form
