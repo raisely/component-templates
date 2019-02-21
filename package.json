@@ -1,0 +1,38 @@
+{
+	"private": true,
+	"scripts": {},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-jest": "^22.4.4",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"eslint": "^4.19.1",
+		"eslint-config-airbnb": "^16.1.0",
+		"eslint-loader": "^2.0.0",
+		"eslint-plugin-import": "^2.11.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-react": "^7.7.0",
+		"prettier": "^1.11.1"
+	},
+	"lint-staged": {
+		"*.{js,json,css}": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"license": "MIT",
+	"dependencies": {
+		"babel-eslint": "^8.2.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/raisely/component-templates.git"
+	},
+	"bugs": {
+		"url": "https://github.com/raisely/component-templates/issues"
+	},
+	"homepage": "https://github.com/raisely/component-templates#readme",
+	"description": ""
+}
