@@ -408,13 +408,13 @@
 		}
 
 		render() {
-			const { feeType } = this.props;
 			// needs skips and back buttons
 			return (
 				<div className="signup-form__payment">
-					<h3>{feeType === 'Registration' ? config.paymentRegistrationTitle : config.paymentDonationTitle}</h3>
+					<h3>{config.feeType === 'Registration' ? config.paymentRegistrationTitle : config.paymentDonationTitle}</h3>
 					<DonationForm
 						{...this.props}
+						feeType={config.feeType}
 						title={config.paymentDonationTitle}
 						perks={false}
 						recurring={false}
