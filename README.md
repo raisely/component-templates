@@ -7,10 +7,14 @@ Templates for Raisely's Custom Component structure
 
 ### [Basic Stateful Component](basic-stateful-component)
 
+### [Component with Raisely Api](component-with-api)
+
+### [Signup Form (v1)](signup-form)
+
 ### Component with Raisely Integrations
 
 ### Component with Page Actions
 
-### Component with Raisely Api
+### Component with Dynamic Styles
 
-### Signup Form
+### Component with Inline Styles
