@@ -357,11 +357,19 @@
 		);
 
 		// add default currency
-		Object.assign(values, {
-			teamProfile: {
-				currency: values.profile.currency,
-			},
-		});
+		if (!values.teamProfile) {
+			Object.assign(values, {
+				teamProfile: {
+					currency: values.profile.currency,
+				},
+			});
+		} else {
+			Object.assign(values, {
+				teamProfile: Object.assign(values.teamProfile, {
+					currency: values.profile.currency,
+				}),
+			});
+		}
 
 		return (
 			<CustomFieldsProvider global={global} name="profile">
