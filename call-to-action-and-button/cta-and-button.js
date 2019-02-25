@@ -47,9 +47,7 @@
 		 * Depending on the page being viewed, you can also access values such as the currently
 		 * displayed profile and post.
 		 */
-		const {
-			profile,
-		} = props.global.current;
+		const profile = props.global.current.profile || props.global.campaign.profile;
 
 		const finalText = text.replace(/\{name\}/g, profile.name);
 		const finalHeader = header.replace(/\{name\}/g, profile.name);
