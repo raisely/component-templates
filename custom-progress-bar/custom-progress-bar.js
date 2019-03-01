@@ -106,7 +106,7 @@
 		// eslint-disable-next-line eqeqeq
 		values.showTotal = values.showTotal == '1';
 		// eslint-disable-next-line eqeqeq
-		values.showTotal = values.showTotal == '1';
+		values.showGoal = values.showGoal == '1';
 
 		const {
 			size,
