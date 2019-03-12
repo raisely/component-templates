@@ -5,6 +5,7 @@
   * @field {text} buttonUrl Url for button to go to (eg be /signup)
   * @field {text} headerTag Header tag to use (default h3)
   * @field {text} align Alignment of header and button
+  * @field {text} buttonTheme primary,secondary,inverse,cta
   */
 
 // eslint-disable-next-line no-unused-expressions
@@ -16,6 +17,7 @@
 		buttonUrl: '/signup',
 		headerTag: 'h3',
 		align: 'center',
+		buttonTheme: 'primary',
 	};
 
 	// We can access specific Raisely components through the
@@ -41,6 +43,7 @@
 			buttonUrl,
 			headerTag,
 			align,
+			buttonTheme,
 		} = values;
 
 		/**
@@ -49,7 +52,9 @@
 		 */
 		const profile = props.global.current.profile || props.global.campaign.profile;
 
-		const finalText = text.replace(/\{name\}/g, profile.name);
+		const finalText = text
+			.replace(/\{name\}/g, profile.name)
+			.split('\n');
 		const finalHeader = header.replace(/\{name\}/g, profile.name);
 
 		const HeaderTag = `${headerTag}`;
@@ -63,13 +68,13 @@
 				<HeaderTag style={alignStyle}>
 					{finalHeader}
 				</HeaderTag>
-				<p>
-					{finalText}
-				</p>
+				{finalText.map(para => (<p>{para}</p>))}
 				<p
 					className="button-container"
 					style={alignStyle}>
 					<Button
+						theme={buttonTheme
+						}
 						href={buttonUrl}
 					>
 						{buttonLabel}
