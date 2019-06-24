@@ -36,9 +36,9 @@
 			e.preventDefault();
 			const { fbSDK } = this.props;
 
-			fbSDK.login((response) => {
+			window.FB.login((response) => {
 				if (response.authResponse) {
-					fbSDK.api('/me', function me(r) {
+					window.FB.api('/me', (r) => {
 						const {
 							first_name, last_name, email, id,
 						} = r;
