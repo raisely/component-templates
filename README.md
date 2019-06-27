@@ -4,24 +4,7 @@ Templates for Raisely's Custom Component structure
 
 ## Documentation
 
-**Our beta developer documentation can be found in the `/@docs` directory of this repository**
-
-### [1. Introduction to Custom Components](@docs/1.intro-and-basics.md)
-
-Learn how to create and maintain custom components
-
-### [2. Building complex Custom Components](@docs/2.props-and-raisely-components.md)
-
-Learn how to build more advanced components, with working code examples and overview of advanced features
-
-### [3. [TODO] Connecting Custom Components to the Raisely Api](@docs/3.making-api-requests.md)
-
-Learn how to send and receive Raisely data within your Custom Components. 
-
-### [4. [WIP] Adding Styles to Components](@docs/4.adding-styles-to-components.md)
-
-Learn various techniques to add and manage styles for your Custom Components.
-
+**Our beta developer documentation can be found at the (Raisely developers site)[https://developers.raisely.com/docs/introduction-to-components].
 
 ## Templates
 
