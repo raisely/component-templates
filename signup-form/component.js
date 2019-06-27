@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line
 (RaiselyComponents, React) => {
-	const { api, Form, Spinner } = RaiselyComponents;
+	const { api, Form, Spinner, Common } = RaiselyComponents;
 	const { Button, Icon } = RaiselyComponents.Atoms;
 	const { findMostRelevantProfile } = RaiselyComponents.Common;
 	const { CustomFieldsProvider } = RaiselyComponents.Modules;
@@ -36,9 +36,9 @@
 			e.preventDefault();
 			const { fbSDK } = this.props;
 
-			fbSDK.login((response) => {
+			window.FB.login((response) => {
 				if (response.authResponse) {
-					fbSDK.api('/me', function me(r) {
+					window.FB.api('/me', (r) => {
 						const {
 							first_name, last_name, email, id,
 						} = r;
@@ -296,6 +296,7 @@
 						global={global}
 						action={action}
 						buttons={buttons}
+						onChange={(...change) => Common.mirrorPathValueFromProfileName(...change)}
 					/>);
 				}
 				// return nothing if a parent hasnt been selected
@@ -310,6 +311,7 @@
 					fields={fields}
 					action={action}
 					buttons={buttons}
+					onChange={(...change) => Common.mirrorPathValueFromProfileName(...change)}
 				/>
 			);
 		};
@@ -382,6 +384,7 @@
 							fields={fields}
 							action={action}
 							buttons={buttons}
+							onChange={(...change) => Common.mirrorPathValueFromProfileName(...change)}
 						/>
 					</div>
 				)}
@@ -597,7 +600,7 @@
 					...this.props, // make global state accessable
 					values: this.state, // add in form data
 					updateValues: this.updateValues, // form data update function
-					steps: this.state.steps, // each step's react component
+					steps: this.buildSteps(this.state), // each step's react component
 					error: this.state.error,
 				}} />
 			);
