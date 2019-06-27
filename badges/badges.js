@@ -1,10 +1,11 @@
 /**
+  * TODO: Move badge map to composable component, remove fetch
   * A list of badge ids to display
   * @field {text} badges one or more of motivation,recruit,host,lung
   */
 
 // eslint-disable-next-line no-unused-expressions
-(RaiselyComponents, React) => {
+() => {
 	/**
 	 * Define your badges
 	 * isActive is a function that takes the profile and the state, and

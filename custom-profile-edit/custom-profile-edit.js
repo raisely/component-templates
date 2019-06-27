@@ -39,8 +39,9 @@
 					id: this.props.global.user.profile.uuid,
 					data: { data },
 				});
+
 				this.props.actions.addUserProfile(request.body().data().data);
-				this.props.actions.addMessage('Profile updated succesfully');
+				this.props.actions.addMessage('Profile updated successfully');
 				integrations.broadcast('profile.updated', { user: this.props.global.user, profile: request.body().data().data });
 				options.setSubmitting(false);
 
@@ -52,14 +53,8 @@
 		}
 
 		render() {
-			const values = this.props.getValues();
-
-			Object.keys(values)
-				.forEach((key) => { if (values[key] === null) values[key] = defaults[key]; });
-
 			const { global } = this.props;
-
-			this.redirectTo = values.redirect;
+			const values = Object.assign({}, defaults, this.props.getValues());
 
 			// Split fields by comma, remove any fields that are empty string
 			const fieldsToShow = (values.fields || '').split(',').map(f => f.trim()).filter(f => f);

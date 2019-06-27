@@ -1,5 +1,6 @@
 /**
   * Custom Progress Bar
+  * TODO: clean this up, use best practices here
   * For displaying progress on things other than donations
   * eg ExerciseTotals
   *

@@ -34,7 +34,7 @@
 		 * by calling props.getValues() if set within your page editor. If values aren't set
 		 * while editing, they will not be present on the values object.
 		 */
-		const values = Object.assign(defaults, props.getValues());
+		const values = Object.assign({}, defaults, props.getValues());
 
 		const {
 			header,
