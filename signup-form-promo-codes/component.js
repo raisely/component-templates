@@ -1,3 +1,8 @@
+/** Notes:
+ * This form requires a field called `codes` on the component
+ * This field should be of type `repeater` and should have fields `code` and `fee`
+ */
+
 // eslint-disable-next-line
 (RaiselyComponents, React) => {
 	const { api, Form, Spinner, Common } = RaiselyComponents;
