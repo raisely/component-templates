@@ -1,6 +1,6 @@
 /**
  * Add The following CSS to your campaign styles:
- *
+
 	.profile-search__results .profilelist__item {
 		position: relative;
 	}
