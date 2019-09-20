@@ -134,7 +134,10 @@
 						<div className="signup-form__account">
 							<h3 className="signup-form__account--heading">{config.accountTitle}</h3>
 							{config.enableFacebook && global.campaign.config.site.facebook.active && (
-								<FacebookLogin fbSDK={fbSDK} next={this.next} />
+								<FacebookLogin 
+									update={user => this.props.updateValues({ user })}
+									fbSDK={fbSDK} 
+									/>
 							)}
 							<Form
 								unlocked
