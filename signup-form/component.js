@@ -34,16 +34,15 @@
 	class FacebookLogin extends React.Component {
 		facebookLogin = (e) => {
 			e.preventDefault();
-			const { fbSDK } = this.props;
-
+			const { update } = this.props;
 			window.FB.login((response) => {
 				if (response.authResponse) {
-					window.FB.api('/me', (r) => {
+					window.FB.api('/me?fields=email,first_name,last_name,name,picture,id', (r) => {
 						const {
-							first_name, last_name, email, id,
+							first_name: firstName, last_name: lastName, name: fullName, email, id,
 						} = r;
-						this.props.next({
-							firstName: first_name, lastName: last_name, email, facebookId: id,
+						update({
+							firstName, lastName, fullName, preferredName: firstName, email, facebookId: id,
 						});
 					});
 				} else {
@@ -135,7 +134,7 @@
 							)}
 							<Form
 								unlocked
-								fields={[...fields, ...[
+								fields={[...fields, ...(values.user.facebookId && values.user.facebookId.length > 0) ? [] : [
 									{
 										active: true,
 										core: true,
@@ -145,6 +144,7 @@
 										private: false,
 										required: true,
 										type: 'password',
+										minLength: passwordLength || 3,
 									},
 									{
 										active: true,
@@ -156,6 +156,7 @@
 										required: true,
 										compare: 'password',
 										type: 'password',
+										minLength: passwordLength || 3,
 									},
 								]]}
 								values={this.props.values.user}
