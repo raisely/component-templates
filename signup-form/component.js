@@ -98,7 +98,11 @@
 		}
 
 		render() {
-			const { global } = this.props;
+			const {
+				global,
+				passwordLength,
+				values,
+			} = this.props;
 
 			const { fbSDK } = this.props.integrations;
 
