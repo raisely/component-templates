@@ -83,7 +83,6 @@
 		};
 	
 		const availableTypes = getAmountTypesFromProps(props);
-		console.log('findme', availableTypes);
 	
 		return (
 			<div className="donation-form__amount-type">
