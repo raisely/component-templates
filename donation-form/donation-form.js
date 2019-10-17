@@ -7,11 +7,14 @@
 		focusDonationForm,
 		getClaimablePerksFromProps,
 		getCurrentProviderFromProps,
-		defaultGiftAidFields,
+		getGiftAidFieldsFromProps,
 		providerTypeToMethod,
 		updateTargetProfileTotal,
 		generateSuccessMessagesFromProps,
 		getAmountTypesFromProps,
+		getAmountButtonWidth,
+		customDetailConditions,
+		typeConfigToString,
 	} = RaiselyComponents.Molecules.donationHelpers;
 
 	const { Form, Spinner } = RaiselyComponents;
@@ -485,49 +488,6 @@
 			);
 		}
 	}	
-
-	class SuccessScreen extends React.Component {
-		componentDidMount() {
-			// tells Raisely Host to update targeted profile and
-			// refresh any related models
-			updateTargetProfileTotal(this.props);
-		}
-
-		render() {
-			const { props } = this;
-
-			if (props.formProps.thankYou) {
-				// return the provided custom thank you message
-				return props.formProps.thankYou;
-			}
-
-			// make a list of parsed string we can use to make a customized donation message
-			// to a new donor after they've donated
-			const [
-				thankYouTitle,
-				thankYouMessage,
-			] = generateSuccessMessagesFromProps(props, [
-				props.thankYouTitle || 'Thank You',
-				props.thankYouMessage || "You've successfully made a donation of [donation.amount]!",
-			]);
-
-			return (
-				<React.Fragment>
-					<h3>{thankYouTitle}</h3>
-					<p>{thankYouMessage}</p>
-					<br />
-					<p className="donation-form__social-copy">Now let&#39;s get the word out there:</p>
-					<RaiselyShare
-						networks="campaign"
-						theme="filled"
-						size="medium"
-						url="current"
-						global={props.global}
-					/>
-				</React.Fragment>
-			);
-		}
-	}
 
 	// Optimised to some guidelines in this article
 	// https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
