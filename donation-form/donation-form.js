@@ -27,6 +27,8 @@
 		toOtherCurrency,
 	} = RaiselyComponents.Common;
 
+	const renderHtml = htmr;
+
 	const { Button, Icon, Input } = RaiselyComponents.Atoms;
 
 	const { RaiselyPayment, RaiselyShare } = RaiselyComponents.Molecules;
