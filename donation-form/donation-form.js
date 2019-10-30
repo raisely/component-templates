@@ -21,6 +21,7 @@
 
 	const {
 		htmr,
+		get,
 		currencies,
 		startCase,
 		displayCurrency,
