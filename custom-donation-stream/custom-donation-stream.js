@@ -62,17 +62,17 @@
 			<DonationStream
 				{...scope}
 				{...config}
-				renderDonation={(baseDonation) => {
+				renderDonation={(baseDonation, isLoading) => {
 					// add in your donation modifications here
 					const donation = {
-						...baseDonation
+						...baseDonation,
 					};
 
 					return (
 						<DonationTile
 							donation={donation}
 							campaign={global.campaign}
-							showAsLoading={showAsLoading}
+							showAsLoading={showAsLoading || isLoading}
 							detail="basic"
 						/>
 					);
