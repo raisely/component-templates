@@ -74,6 +74,7 @@
 							campaign={global.campaign}
 							showAsLoading={showAsLoading || isLoading}
 							detail="basic"
+							user={scope.user}
 						/>
 					);
 				}}
