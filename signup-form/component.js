@@ -195,7 +195,7 @@
 			// handle creating group profile situation
 			if (type === 'GROUP') {
 				return updateValues({
-					profile: { type },
+					profile: { type: 'INDIVIDUAL' },
 					teamProfile: { type: 'GROUP' },
 					settings: { searchGroup: false, createTeam: true },
 				}, next);
