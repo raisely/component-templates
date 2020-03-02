@@ -15,7 +15,7 @@
 
 	// define inline configuration
 	const config = {
-		enableTeams: true,
+		enableTeams: true,f
 		enableFacebook: true,
 		accountTitle: 'Your Account',
 		challengeTitle: 'Your Challenge',
@@ -151,20 +151,8 @@
 										private: false,
 										required: true,
 										type: 'password',
-										minLength: passwordLength || 3,
-									},
-									{
-										active: true,
-										core: true,
-										id: 'password2',
-										label: 'Confirm Password',
-										locked: false,
-										private: false,
-										required: true,
-										compare: 'password',
-										type: 'password',
-										minLength: passwordLength || 3,
-									},
+										minLength: passwordLength || 6,
+									}
 								]]}
 								values={this.props.values.user}
 								actionText={config.accountButton}
