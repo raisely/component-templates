@@ -15,7 +15,7 @@
 
 	// define inline configuration
 	const config = {
-		enableTeams: true,f
+		enableTeams: true,
 		enableFacebook: true,
 		accountTitle: 'Your Account',
 		challengeTitle: 'Your Challenge',
