@@ -1,22 +1,22 @@
 (RaiselyComponents, React) => {
-	const { Form, styled } = RaiselyComponents;
-	
-	const formspreeUrl = 'https://formspree.io/abc123';
+  const { Form, styled } = RaiselyComponents;
+
+  const formspreeUrl = "https://formspree.io/abc123";
 
   const initialValues = {};
 
-	const Wrapper = styled("div")`
-		.field-wrapper {
-			margin-bottom: 0.5rem;
-		}
-		.contact-form-thanks {
-			padding: 1rem;
-			text-align: center;
-			font-weight: bold;
-			background: #333;
-			color: white;
-		}
-	`;
+  const Wrapper = styled("div")`
+    .field-wrapper {
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-thanks {
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      background: #333;
+      color: white;
+    }
+  `;
 
   return class ContactForm extends React.Component {
     state = {};
@@ -39,11 +39,11 @@
 
     FinalPage() {
       return (
-				<Wrapper>
-					<div className="contact-form-thanks">
-						<p>Thanks! We'll be in touch shortly.</p>
-					</div>
-				</Wrapper>
+        <Wrapper>
+          <div className="contact-form-thanks">
+            <p>Thanks! We'll be in touch shortly.</p>
+          </div>
+        </Wrapper>
       );
     }
 
@@ -81,8 +81,8 @@
                 id: "email",
                 required: true,
                 core: true
-							},
-							{
+              },
+              {
                 active: true,
                 visible: true,
                 label: "Message",
@@ -93,8 +93,8 @@
               }
             ]}
             values={initialValues}
-						action={this.save}
-						actionText="Send Message"
+            action={this.save}
+            actionText="Send Message"
           />
         </Wrapper>
       );
