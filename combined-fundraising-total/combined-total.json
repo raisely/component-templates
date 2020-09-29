@@ -1,0 +1,25 @@
+{
+    "fields": {
+        "version": {
+            "type": "number",
+            "label": "Current Version of Component",
+            "value": 1
+        },
+        "campaigns": {
+            "id": "campaigns",
+            "type": "repeater",
+            "label": "Campaigns",
+            "value": "",
+            "options": [
+                {
+                    "id": "path",
+                    "type": "text",
+                    "label": "Campaign Path",
+                    "defaultValue": ""
+                }
+            ],
+            "singular": "Campaign"
+        }
+    },
+    "uuid": "xxxxxxxx"
+}
