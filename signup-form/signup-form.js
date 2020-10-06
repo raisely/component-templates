@@ -20,7 +20,6 @@
 		exerciseMultiplierFromConfig,
 	} = RaiselyComponents.Common;
 
-	console.log("findme", RaiselyComponents.Molecules);
 
 	return class CustomSignupForm extends React.Component {
 		constructor(props) {
