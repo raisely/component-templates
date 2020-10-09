@@ -1,0 +1,184 @@
+{
+	"fields": {
+		"version": {
+			"type": "number",
+			"label": "Current Version of Component",
+			"value": 1
+		},
+		"enableTeams": {
+			"label": "Enable teams",
+			"type": "boolean",
+			"value": true
+		},
+		"enableFacebook": {
+			"label": "Enable Facebook signup",
+			"type": "boolean",
+			"value": true
+		},
+		"enableRego": {
+			"label": "Enable Registration Fee",
+			"type": "boolean",
+			"value": false
+		},
+		"enableDonation": {
+			"label": "Enable Self Donation",
+			"type": "boolean",
+			"value": true
+		},
+		"accountTitle": {
+			"group": "headings",
+			"label": "Account Form Title",
+			"type": "text",
+			"value": "Your Account"
+		},
+		"accountButton": {
+			"group": "buttons",
+			"label": "Account Form Button",
+			"type": "text",
+			"value": "Continue"
+		},
+		"completeButton": {
+			"group": "buttons",
+			"label": "Complete Button",
+			"type": "text",
+			"value": "Sign Up"
+		},
+		"showTitleIcons": {
+			"group": "headings",
+			"label": "Show Heading Icons",
+			"type": "boolean",
+			"value": true
+		},
+		"profileTitle": {
+			"group": "headings",
+			"label": "Profile Form Title",
+			"type": "text",
+			"value": "Your Profile"
+		},
+		"paymentDonationTitle": {
+			"group": "headings",
+			"label": "Donation Title",
+			"type": "text",
+			"value": "Kickstart your Fundraising"
+		},
+		"paymentRegistrationTitle": {
+			"group": "headings",
+			"label": "Registration Fee Title",
+			"type": "text",
+			"value": "Pay the Registration Fee"
+		},
+		"paymentButton": {
+			"group": "buttons",
+			"label": "Payment Button",
+			"type": "text",
+			"help": "You can use {amount} to dynamically insert the donation amount 🤯",
+			"value": "Donate {amount} and complete Sign Up"
+		},
+		"registrationAmount": {
+			"group": "fees",
+			"label": "Registration Fee",
+			"type": "currency",
+			"value": 5000
+		},
+		"registrationAmountField": {
+			"group": "fees",
+			"label": "Registration Fee Field",
+			"type": "text",
+			"value": "",
+			"help": "Advanced: Enter a field ID if you would like to set a dynamic fee based on that field."
+		},
+		"profileLanguage": {
+			"group": "language",
+			"label": "Profile Language",
+			"type": "text",
+			"value": "Profile"
+		},
+		"teamLanguage": {
+			"group": "language",
+			"label": "Team Language",
+			"type": "text",
+			"value": "Team"
+		},
+		"joinButtonTitle": {
+			"group": "language",
+			"label": "Join a Team Button",
+			"type": "text"
+		},
+		"joinButtonDescription": {
+			"group": "language",
+			"label": "Join a Team Description",
+			"type": "text",
+			"value": ""
+		},
+		"teamButtonTitle": {
+			"group": "language",
+			"label": "Start a Team Button",
+			"type": "text"
+		},
+		"teamButtonDescription": {
+			"group": "language",
+			"label": "Start a Team Description",
+			"type": "text",
+			"value": ""
+		},
+		"exerciseTitle": {
+			"group": "headings",
+			"label": "Exercise Goal Form Title",
+			"type": "text",
+			"value": "Choose your activity goal"
+		},
+		"exerciseDescription": {
+			"group": "language",
+			"label": "Exercise Goal Description",
+			"type": "text",
+			"value": "Choose a goal from the list below"
+		},
+		"passwordLength": {
+			"group": "advanced",
+			"label": "Minimum Password length",
+			"type": "number",
+			"value": 6
+		},
+		"avoidDefaultNames": {
+			"group": "advanced",
+			"label": "Disable automatic naming",
+			"type": "boolean",
+			"value": false,
+			"help": "Avoid generating profile and team names automatically"
+		},
+		"alphabeticalProfileSearch": {
+			"group": "advanced",
+			"label": "Sort Teams Alphabetically",
+			"type": "boolean",
+			"value": false,
+			"help": "Order Team search results alphabetically instead of by total"
+		},
+		"enableExerciseGoal": {
+			"label": "Enable exercise goal step",
+			"group": "exercise",
+			"type": "boolean",
+			"value": false,
+			"help": "You can set your activity types and units in <a target=\"_blank\" href=\"../setup/activity\">Activity Settings</a>."
+		},
+		"exerciseGoals": {
+			"label": "Exercise goals",
+			"type": "repeater",
+			"group": "exercise",
+			"value": [{ "value": 30, "description": "Lorem Ipsum" }],
+			"options": [
+				{
+					"id": "value",
+					"type": "number",
+					"label": "Goal Amount (km, hours or miles)",
+					"defaultValue": ""
+				},
+				{
+					"id": "description",
+					"type": "text",
+					"label": "Goal Description",
+					"defaultValue": ""
+				}
+			]
+		}
+	}
+}
