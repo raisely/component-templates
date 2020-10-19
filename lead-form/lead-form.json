@@ -1,0 +1,24 @@
+{
+	"fields": {
+		"version": {
+			"type": "number",
+			"label": "Current Version of Component",
+			"value": 1
+		},
+		"tags": {
+			"type": "tags",
+			"label": "Tags to add",
+			"additional": { "recordType": "user" }
+		},
+		"successMessage": {
+			"type": "textarea",
+			"label": "Success Message",
+			"value": "Thank you for entering your details."
+		},
+		"successRedirect": {
+			"type": "text",
+			"label": "Success Redirect",
+			"value": ""
+		}
+	}
+}
