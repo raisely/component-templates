@@ -15,6 +15,8 @@
 
 	const siteKey = "6LdiCUIUAAAAAMuF1TD8VkdBgTlrklGyJbNgJCdn";
 	let recaptcha = [false, false]; // [ready, loaded]
+	
+	const cache = {};
 
 	return (props) => {
 		const [success, setSuccess] = useState(false);
@@ -31,8 +33,6 @@
 				clearInterval(captchaInterval);
 			}
 		}, 100);
-
-		const cache = {};
 
 		window.loadRecaptcha = () => {
 			recaptcha[0] = true;
