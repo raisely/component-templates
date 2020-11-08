@@ -20,7 +20,7 @@
 
 	return (props) => {
 		const [success, setSuccess] = useState(false);
-		const { successMessage, successRedirect, tags } = props.getValues();
+		const { successMessage, successRedirect, tags, buttonText } = props.getValues();
 
 		const captchaInterval = setInterval(() => {
 			if (recaptcha[0] && !recaptcha[1]) {
@@ -82,6 +82,7 @@
 								props.global.customFields.user
 							)}
 							action={onValidate}
+							actionText={buttonText || 'Submit'}
 						/>
 					</div>
 				)}
