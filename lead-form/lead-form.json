@@ -19,6 +19,11 @@
 			"type": "text",
 			"label": "Success Redirect",
 			"value": ""
+		},
+		"buttonText": {
+			"type": "text",
+			"label": "Button Text",
+			"value": "Submit"
 		}
 	}
 }
