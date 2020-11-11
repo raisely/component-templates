@@ -25,7 +25,7 @@
 		}
 		render() {
 			const values = this.props.getValues();
-			if (!this.state.total) return null;
+			if (!this.state.total && this.state.total !== 0) return null;
 			return (
 				<h1
 					style={{
