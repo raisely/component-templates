@@ -542,9 +542,9 @@
 										existingCards={false}
 										user={this.props.values.user}
 										onTokenSuccess={this.submit}
-										amount={regAmount + merchAmount}
+										amount={Number(regAmount) + Number(merchAmount)}
 										registrationAmount={
-											regAmount + merchAmount
+											Number(regAmount) + Number(merchAmount)
 										}
 										appendToForm={() => (
 											<div className="signup-form__navigation">
