@@ -1,12 +1,24 @@
 (RaiselyComponents, _React) => {
 	const { useState, useEffect, Fragment } = React;
 	const { ProgressBar, Button, Link: RaiselyLink } = RaiselyComponents.Atoms;
-	const { DonationForm, RaiselyShare } = RaiselyComponents.Molecules;
+	
+	const {
+		DonationForm,
+		RaiselyShare,
+		Modal,
+		ProfileSelect,
+		ProfilePreviewByUuid,
+	} = RaiselyComponents.Molecules;
+  
+  	const { api } = RaiselyComponents;
+	
 	const { resolveProfileValuesByDisplaySource } = RaiselyComponents.Common;
 	return (props) => {
 		const { actions, global } = useRaisely(true);
 		const [activeTab, setActiveTab] = useState("individual");
 		const [isDonating, setIsDonating] = useState(false);
+		const [isJoiningTeam, setIsJoiningTeam] = useState(false);
+		const [teamToJoin, setTeamToJoin] = useState(null);
 
 		const user = global.user;
 		const integrations = props.integrations;
@@ -27,6 +39,24 @@
 
 		const activeProfile =
 			activeTab === "individual" ? profile : teamProfile;
+		
+		// handle joining team from modal
+		const joinTeam = async (e, teamUuid) => {
+			e.preventDefault();
+			if (!teamUuid || !profile) return;
+			setIsJoiningTeam("joining");
+			await api.profiles.join.update({
+				id: profile.uuid,
+				data: { parentUuid: teamUuid },
+				query: { private: true },
+			});
+			// Refetch the users profile
+			const userData = await actions.fetchAndUpdateUser();
+			actions.addMessage(`Joined ${teamLanguage}`);
+			integrations.broadcast("profile.updated", userData);
+			setIsJoiningTeam(false);
+			setTeamToJoin(null);
+		};
 
 		const [displayAmount] = resolveProfileValuesByDisplaySource(
 			activeProfile,
@@ -142,14 +172,80 @@
 					</div>
 				</div>
 				{!teamProfile && (
-					<p className="control-panel__teamlink">
-						Want to fundraise with friends?
-						<br />
-						<RaiselyLink to="/create/group">
-							Start a team
-						</RaiselyLink>
-					</p>
-				)}
+				<p className="control-panel__teamlink">
+					Want to fundraise with friends?
+					<div className="button-row button-row--center buttons--small">
+						<Button href="/create/group">Start a team</Button>
+						<Button onClick={() => setIsJoiningTeam(true)}>
+							Join a team
+						</Button>
+					</div>
+					{isJoiningTeam && (
+						<Modal
+							button={false}
+							automatic
+							delay={1}
+							onClose={() => {
+								setIsJoiningTeam(false);
+								setTeamToJoin(null);
+							}}
+							dockToBottom
+							modalContent={() => (
+								<form
+									onSubmit={(e) => joinTeam(e, teamToJoin)}
+									className="raisely-profile-form"
+								>
+									<h2>Join a {teamLanguage}</h2>
+									{teamToJoin ? (
+										<ProfilePreviewByUuid
+											api={api}
+											heading="You are joining:"
+											uuid={teamToJoin}
+											cancel={() => setTeamToJoin(null)}
+											openNewTab={true}
+										/>
+									) : (
+										<ProfileSelect
+											global={global}
+											api={api}
+											label={`Search for a ${teamLanguage} to join`}
+											placeholder={`Enter the ${teamLanguage}'s name`}
+											alphabeticalProfileSearch={true}
+											customFilter={(item, ix) => {
+												const teamIsFull =
+													global.campaign.config
+														.maximumTeamSize &&
+													global.campaign.config
+														.maximumTeamSize <=
+														item.value.memberCount;
+												return !teamIsFull;
+											}}
+											update={(uuid) =>
+												setTeamToJoin(uuid)
+											}
+											autofocus
+										/>
+									)}
+									{teamToJoin && (
+										<div className="form__navigation">
+											<Button
+												type="submit"
+												disabled={
+													isJoiningTeam === 'joining'
+												}
+											>
+												{isJoiningTeam === 'joining'
+													? 'Joining...'
+													: 'Join'}
+											</Button>
+										</div>
+									)}
+								</form>
+							)}
+						/>
+					)}
+				</p>
+			)}
 			</Fragment>
 		);
 	};
