@@ -1,0 +1,60 @@
+{
+	"fields": {
+		"profile": {
+			"label": "Show donations to:",
+			"type": "profile",
+            "value": "current",
+			"additional": {
+				"includeUser": true
+			}
+		},
+		"direction": {
+			"label": "Display",
+			"type": "select",
+            "value": "vertical",
+			"options": [
+				{ "value": "vertical", "label": "Vertically" },
+				{ "value": "horizontal", "label": "Horizontally" },
+				{ "value": "grid", "label": "Grid" }
+			]
+		},
+		"limit": {
+			"label": "Limit",
+			"type": "number",
+            "value": 10
+		},
+		"sort": {
+			"label": "Sort By",
+			"type": "select",
+            "value": "createdAt",
+			"options": [
+				{ "value": "createdAt", "label": "Date" },
+				{ "value": "amount", "label": "Amount" }
+			]
+		},
+		"order": {
+			"label": "Order",
+			"type": "select",
+            "value": "desc",
+			"options": [
+				{ "value": "desc", "label": "Descending" },
+				{ "value": "asc", "label": "Ascending" }
+			]
+		},
+		"disableThankYou": {
+			"label": "Disable thank you messages",
+			"type": "boolean",
+			"help": "Switching this value on will prevent profile owners from using this stream to make thank yous"
+		},
+		"showHighlight": {
+			"label": "Show highlighted donation",
+			"type": "boolean",
+			"help": "Switching this value on will highlight the top donor of a stream at the top of the display area"
+		},
+		"version": {
+			"type": "number",
+			"label": "Current Version of Component",
+			"value": 1
+		}
+	}
+}
