@@ -281,7 +281,21 @@
 				}
 				// If there's also a self donation, add as an item
 				if (this.props.enableDonation) {
-					const selfDonationAmount = data.amount - amount;
+					// Need to offset the detected self-donation amount by any merchandise
+					const merchandise = this.props.values.settings.cart;
+					let merchandiseTotal = 0;
+
+					// Look for merchandise items
+					if (merchandise.length > 0) {
+						merchandise.forEach((item) => {
+							const itemValue = item.price * 100 * item.quantity;
+							merchandiseTotal += itemValue;
+						});
+					}
+
+					// Subtract merchandise items total as well, prevents
+					const selfDonationAmount = data.amount - amount - merchandiseTotal;
+
 					if (selfDonationAmount) {
 						registrationItems.push({
 							amount: selfDonationAmount,
