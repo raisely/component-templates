@@ -26,11 +26,11 @@ A progress bar for things other than donations.
 Create a custom profile editing form if you want to display only a
 subset of fields or redirect to another page on success.
 
-### [DonationForm](donation-form-examples/donation-form-default)
+### [DonationForm](donation-form-examples/donation-form-default.js)
 A simple donation form that supports express payments
 
-### [DonationForm Express](donation-form-examples/donation-form-express-only)
+### [DonationForm Express](donation-form-examples/donation-form-express-only.js)
 A simple donation form that only accepts express payments
 
-### [DonationForm Checkout](donation-form-examples/donation-form-checkoout-form)
+### [DonationForm Checkout](donation-form-examples/donation-form-checkoout-form.js)
 A simple checkout component for integration into a custom signup form
