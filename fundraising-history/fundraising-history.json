@@ -1,0 +1,27 @@
+{
+    "fields": {
+        "heading": {
+            "type": "text",
+            "label": "Heading",
+            "value": "My History"
+        },
+        "campaigns": {
+            "help": "Enter which campaigns you'd like to show the history for",
+            "type": "repeater",
+            "label": "Campaigns",
+            "options": [
+                {
+                    "id": "uuid",
+                    "type": "text",
+                    "label": "Campaign Uuid",
+                    "defaultValue": ""
+                }
+            ],
+            "singular": "campaign"
+        },
+        "activityWord": {
+            "type": "text",
+            "label": "Activity Word"
+        }
+    },
+}
