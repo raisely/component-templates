@@ -2,6 +2,12 @@
  * This example component renders a list of custom badges that are not default Raisely badges
  */
 (RaiselyComponents, React) => {
+	// Since we have access to the main React library, we can pull out the hooks we need
+	const { useState, useEffect } = React;
+
+	// We also pull out the `api` helper from Raisely
+	const { api, styled } = RaiselyComponents;
+
 	/**
 	 * Here, we have defined our an array of custom badge objects
 	 * These  badges will be displayed in place of the default Raisely badges
@@ -48,15 +54,81 @@
 		}
 	];
 
-	// Since we have access to the main React library, we can pull out the hooks we need
-	const { useState, useEffect } = React;
+	// Use emotion's `styled` helper function for styled components
+	const BadgeWrapper = styled("div")`
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem;
+		background-color: rgb(248, 243, 253);
+		border-radius: 0.5rem;
+	`;
 
-	// We also pull out the `api` helper from Raisely
-	const { api } = RaiselyComponents;
+	// `.badge-item-image` is a child element that we can style in this way
+	const BadgeItem = styled("div")`
+		text-align: center;
 
-	return (props) => {
+		.badge-item-image {
+			width: 60%;
+			border-radius: 100%;
+			border: 2px solid rgba(93, 27, 166, 0.1);
+		}
+
+		.badge-item-name {
+			font-weight: bold;
+		}
+	`;
+
+	/**
+	 * Helper that generate markup for the badge items
+	 * @function generateBadgesItems
+	 * @param {Object} values - The values object we get from props. See below.
+	 * @param {Array} values.badges - An array of badge ids
+	 * @param {Object} profile - The profile object we pass in from the current state
+	 * @param {Number} recruited - The `recruited` state we set in the `loadRecruits` function
+	*/
+	const generateBadgesItems = (values, profile, recruited) => {
+		values.badges =
+		(values.badges && values.badges.split(',').map(b => b.trim())) ||
+		badgeConfig.map(b => b.id);
+
+		// Loop over our custom badges and build some markup for each one
+		return badgeConfig
+			.filter(badge => values.badges.includes(badge.id))
+			.map((badge) => {
+				// Set intial value for `isActive`
+				let isActive = false;
+				// Then re-set `isActive` based on the return value of each badge's isActive function
+				if (badge.isActive) isActive = badge.isActive(profile, recruited);
+
+				// Determine whether to use the `active` or `inactive` image url
+				const url = isActive ? badge.active : badge.inactive;
+				// The append a width to the url to create the final image url
+				const fullUrl = `${url}?w=200`;
+
+				return (
+					<BadgeItem
+						className={`badge ${isActive ? 'active' : 'inactive'}`}
+						// The `key` prop allows React to uniquely identify each
+						// element in this array. see: https://reactjs.org/docs/lists-and-keys.html
+						key={badge.name}
+					>
+						<img
+							src={fullUrl}
+							alt={badge.description}
+							className="badge-item-image" />
+						<p className="badge-item-name">{badge.name}</p>
+					</BadgeItem>
+				);
+			});
+	}
+
+	/**
+	 * The main component that is exported from this file
+	 * @prop {Object} props
+	 */
+	const BadgesComponent = (props) => {
 		// We can get the `current` state from global values
-		const { current } = useRaisely();
+		const { campaign, current } = useRaisely();
 
 		// Then we get the profile from the `current` state
 		const { profile } = current;
@@ -69,15 +141,16 @@
 		 */
 		const values = props.getValues();
 
-		values.badges =
-			(values.badges && values.badges.split(',').map(b => b.trim())) ||
-			badgeConfig.map(b => b.id);
-
 		// Set up some state to track the number of `recruited` members
 		// Default value is set to `0`
 		const [recruited, setRecruited] = useState(0);
 
-		// Use the Raisely `api` helper to fetch the member count for the current profile
+		/**
+		 * Uses the Raisely `api` helper to fetch the member count for the current profile
+		 * then sets the `recruited` state
+		 * @async
+		 * @function loadRecruits
+		*/
 		const loadRecruits = async () => {
 			// API Doc: https://developers.raisely.com/reference/getprofilesmembers
 			const response = await api.profiles.members.getAll({
@@ -103,39 +176,16 @@
 			loadRecruits();
 		}, [])
 
-		// Loop over our custom badges and build some markup for each one
-		const badges = badgeConfig
-			.filter(badge => values.badges.includes(badge.id))
-			.map((badge) => {
-				// Set intial value for `isActive`
-				let isActive = false;
-				// Then re-set `isActive` based on the return value of each badge's isActive function
-				if (badge.isActive) isActive = badge.isActive(profile, recruited);
-
-				// Determine whether to use the `active` or `inactive` image url
-				const url = isActive ? badge.active : badge.inactive;
-				// The append a width to the url to create the final image url
-				const fullUrl = `${url}?w=200`;
-
-				return (
-					<div
-						className={`badge ${isActive ? 'active' : 'inactive'}`}
-						// The `key` prop allows React to uniquely identify each
-						// element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-						key={badge.name}
-					>
-						<img
-							src={fullUrl}
-							alt={badge.description} />
-						<h5>{badge.name}</h5>
-					</div>
-				);
-			});
+		const badgeList = generateBadgesItems(values, profile, recruited);
 
 		return (
-			<div className="badges">
-				{badges}
-			</div>
+			<BadgeWrapper className="badges">{badgeList}</BadgeWrapper>
 		)
 	}
+
+	/**
+	 * Once you've declared your required components, be sure to return the
+	 * main Raisely Component so it can be shown on your page.
+	 */
+	return BadgesComponent;
 };
