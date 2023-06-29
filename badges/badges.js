@@ -156,7 +156,7 @@
 			const response = await api.profiles.members.getAll({
 				id: profile.uuid,
 				query: {
-					limit: 1000,
+					limit: 1,
 					status: 'ACTIVE',
 					"public.switchOnStatus": "confirmed"
 				}
