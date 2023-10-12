@@ -330,6 +330,7 @@
 									/>
 								)}
 							</ManualPaymentForm>
+							<ErrorFeedback />
 						</div>
 					</div>
 				</Fragment>
