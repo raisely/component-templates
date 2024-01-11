@@ -25,10 +25,10 @@
 	const { Button } = RaiselyComponents.Atoms;
 
 	/**
-	 * Once you've declared your required components, be sure to return the function
-	 * representing your final Raisely Component so it can be shown on your page.
+	 * The main component that is exported from this file
+	 * @prop {Object} props
 	 */
-	return (props) => {
+	const CtaAndButton = (props) => {
 		/**
 		 * If you declare fields within your Custom Component settings, they can be accessed
 		 * by calling props.getValues() if set within your page editor. If values aren't set
@@ -83,4 +83,10 @@
 			</div>
 		);
 	};
+
+	/**
+	 * Once you've declared your required components, be sure to return the
+	 * main Raisely Component so it can be shown on your page.
+	 */
+	return CtaAndButton;
 };
