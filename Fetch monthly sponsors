@@ -1,0 +1,79 @@
+/*
+This is a simple react component a profile page that fetches and displays a summary of active sponsorships for a given profile using donations made and subscription status as the filter. The summary includes the total value of active sponsorships and the number of active sponsorships. Im not a coder, but I needed this, so sharing. The component uses Raisely's API to fetch the data and React's useState and useEffect hooks for state management and side effects, respectively.
+*/
+
+
+(RaiselyComponents, React) => {
+	const { api, Common } = RaiselyComponents;
+	const { useEffect, useState } = React;
+
+	function ActiveSponsorshipSummary(props) {
+		const [totalAmount, setTotalAmount] = useState(0);
+		const [subscriptionCount, setSubscriptionCount] = useState(0);
+		const [loading, setLoading] = useState(true);
+
+		useEffect(() => {
+			const fetchSponsorships = async () => {
+				try {
+					const profile = props.global?.current?.profile;
+					const profileUuid = profile?.uuid;
+
+					if (!profileUuid) {
+						setLoading(false);
+						return;
+					}
+
+					const response = await api.donations.getAll({
+						query: {
+							profile: profileUuid,
+							subscriptionStatus: 'active',
+							limit: 1000,
+						}
+					});
+
+					if (!response || !response.data || !response.data.data) {
+						setLoading(false);
+						return;
+					}
+
+					const donations = response.data.data;
+
+					if (!Array.isArray(donations)) {
+						setLoading(false);
+						return;
+					}
+
+					const activeSubscriptions = donations.filter(donation => donation.subscriptionUuid);
+
+					const total = activeSubscriptions.reduce((sum, donation) => sum + donation.amount, 0);
+					setTotalAmount(total);
+					setSubscriptionCount(activeSubscriptions.length);
+				} catch (error) {
+					setLoading(false);
+				} finally {
+					setLoading(false);
+				}
+			};
+
+			fetchSponsorships();
+		}, [props.global?.current?.profile?.uuid]);
+
+		if (loading) {
+			return <p>Loading...</p>;
+		}
+
+		return (
+			<div className="active-sponsorship-summary">
+				<h4 className="active-sponsorship-summary__title">Active Monthly Sponsorships</h4>
+				<p className="active-sponsorship-summary__value">
+					<strong>Total Value:</strong> {Common.displayCurrency(totalAmount, props.global.campaign.currency)}
+				</p>
+				<p className="active-sponsorship-summary__count">
+					<strong>Number of Active Sponsorships:</strong> {subscriptionCount}
+				</p>
+			</div>
+		);
+	}
+
+	return ActiveSponsorshipSummary;
+};
