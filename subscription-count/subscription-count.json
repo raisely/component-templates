@@ -1,0 +1,9 @@
+{
+	"fields": {
+		"customTitle": {
+			"type": "text",
+			"label": "Title",
+			"value": ""
+		}
+	}
+}
