@@ -19,41 +19,52 @@
 
         const {
         } = current;
-     
-        const [subscriptionCount, setSubscriptionCount] = useState(null);
+  
+        const [totalCount, setTotalCount] = useState(null);
+        const [error, setError] = useState(null);
 
         /* Fetch subscription data when the component loads.*/       
         const fetchData = async () => {
             try {
                 const response = await api.all('subscriptions').getAll({
-					status: "OK",
-                });         
+                    status: "OK",
+                    limit: 1,
+                });
 
-                const subscriptions = response.body().data();
-                if (subscriptions.data) {
-                    setSubscriptionCount(subscriptions.data.length); // Set the count of subscriptions
+                const responseData = response.data; 
+                // Access pagination
+                const pagination = responseData?.pagination;
+
+                if (pagination && typeof pagination.total === 'number') {
+                    setTotalCount(pagination.total);
+                } else {
+                    setError('Unable to fetch total count');
+                    setTotalCount(0);
                 }
             } catch (error) {
                 console.error('Error fetching subscriptions:', error);
-                setSubscriptionCount(0); // Set to 0 if there's an error
+                setError('Error fetching subscriptions');
+                setTotalCount(0);
             }
         }
 
         useEffect(() => {
             fetchData();
-        }, [])
+        }, []);
 
         return (
-          <div className="subscription-count">
-            <h3 className="subscription-count__title">
-              {values.customTitle || config.defaultTitle}
-            </h3>
-            {subscriptionCount !== null ? (
-              <p className="subscription-count__number">{subscriptionCount}</p>
-            ) : (
-              <p className="subscription-count__loading">Loading...</p>
-            )}
-          </div>
+            <div className="subscription-count">
+                <h3 className="subscription-count__title">
+                    {values.customTitle || config.defaultTitle}
+                </h3>
+                {error ? (
+                    <p className="subscription-count__error">{error}</p>
+                ) : totalCount !== null ? (
+                    <p className="subscription-count__number">{totalCount}</p>
+                ) : (
+                    <p className="subscription-count__loading">Loading...</p>
+                )}
+            </div>
         );
     }
 }
