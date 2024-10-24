@@ -1,0 +1,209 @@
+{
+	"fields": {
+		"fundraiserThemesTitle": {
+			"group": "headings",
+			"label": "Fundraiser Themes Form Title",
+			"type": "text"
+		},
+		"fundraiserThemesDescription": {
+			"group": "language",
+			"label": "Fundraiser Themes Description",
+			"type": "text"
+		},
+		"fundraiserActionText": {
+			"group": "language",
+			"label": "Fundraiser Themes Action Button",
+			"type": "text"
+		},
+		"fundraiserSelectedActionText": {
+			"group": "language",
+			"label": "Fundraiser Themes Selected Action Button",
+			"type": "text"
+		},
+		"exerciseTitle": {
+			"group": "headings",
+			"label": "Exercise Goal Form Title",
+			"type": "text"
+		},
+		"exerciseDescription": {
+			"group": "language",
+			"label": "Exercise Goal Description",
+			"type": "text"
+		},
+		"exerciseGoals": {
+			"label": "Exercise Goals",
+			"type": "repeater",
+			"group": "exercise",
+			"deprecated": true,
+			"options": [
+				{
+					"id": "value",
+					"type": "number",
+					"label": "Goal Amount (km, hours or miles)",
+					"defaultValue": ""
+				},
+				{
+					"id": "description",
+					"type": "text",
+					"label": "Goal Description",
+					"defaultValue": ""
+				}
+			]
+		},
+		"accountTitle": {
+			"group": "headings",
+			"label": "Account Form Title",
+			"type": "text"
+		},
+		"enableFacebook": {
+			"label": "Enable Facebook signup",
+			"type": "boolean"
+		},
+		"passwordLength": {
+			"group": "advanced",
+			"label": "Minimum Password Length",
+			"type": "number"
+		},
+		"accountButton": {
+			"group": "buttons",
+			"label": "Account Form Button",
+			"type": "text"
+		},
+		"enableTickets": {
+			"group": "tickets",
+			"label": "Enable tickets",
+			"type": "boolean"
+		},
+		"ticketSelectTitle": {
+			"group": "headings",
+			"label": "Select Tickets Heading",
+			"type": "text"
+		},
+		"ticketSelectDescription": {
+			"group": "headings",
+			"label": "Select Tickets Description",
+			"type": "text"
+		},
+		"tickets": {
+			"group": "tickets",
+			"label": "Ticket Types",
+			"type": "tickets",
+			"context": "signup"
+		},
+		"ticketSelectButton": {
+			"group": "buttons",
+			"label": "Select Tickets Button",
+			"type": "text"
+		},
+		"ticketHolderTitle": {
+			"group": "headings",
+			"label": "Attendee Details Heading",
+			"type": "text"
+		},
+		"ticketHolderButton": {
+			"group": "buttons",
+			"label": "Attendee Details Button",
+			"type": "text"
+		},
+		"enableTeams": {
+			"label": "Enable teams",
+			"type": "boolean"
+		},
+		"avoidDefaultNames": {
+			"group": "advanced",
+			"label": "Disable automatic naming",
+			"type": "boolean",
+			"help": "Avoid generating profile and team names automatically"
+		},
+		"profileTitle": {
+			"group": "headings",
+			"label": "Profile Form Title",
+			"type": "text"
+		},
+		"profileLanguage": {
+			"group": "language",
+			"label": "Profile Language",
+			"type": "text"
+		},
+		"teamLanguage": {
+			"group": "language",
+			"label": "Team Language",
+			"type": "text"
+		},
+		"joinButtonTitle": {
+			"group": "language",
+			"label": "Join a Team Button",
+			"type": "text"
+		},
+		"joinButtonDescription": {
+			"group": "language",
+			"label": "Join a Team Description",
+			"type": "text"
+		},
+		"teamButtonTitle": {
+			"group": "language",
+			"label": "Start a Team Button",
+			"type": "text"
+		},
+		"teamButtonDescription": {
+			"group": "language",
+			"label": "Start a Team Description",
+			"type": "text"
+		},
+		"alphabeticalProfileSearch": {
+			"group": "advanced",
+			"label": "Sort teams alphabetically",
+			"type": "boolean",
+			"help": "Order Team search results alphabetically instead of by total"
+		},
+		"completeButton": {
+			"group": "buttons",
+			"label": "Complete Button",
+			"type": "text"
+		},
+		"enableDonation": {
+			"label": "Enable self donations",
+			"type": "boolean"
+		},
+		"paymentDonationTitle": {
+			"group": "headings",
+			"label": "Donation Title",
+			"type": "text"
+		},
+		"donationButton": {
+			"group": "buttons",
+			"label": "Donation Button",
+			"type": "text"
+		},
+		"paymentTitle": {
+			"group": "headings",
+			"label": "Payment Heading",
+			"type": "text"
+		},
+		"paymentDescription": {
+			"group": "headings",
+			"label": "Payment Description",
+			"type": "text"
+		},
+		"paymentButton": {
+			"group": "buttons",
+			"label": "Payment Button",
+			"type": "text"
+		},
+		"showTitleIcons": {
+			"group": "headings",
+			"label": "Show Heading Icons",
+			"type": "boolean"
+		},
+		 "disablePrompt": {
+			"label": "Disable prompt",
+			"help": "Disable the message that pops up when leaving the form unfinished",
+			"type": "boolean",
+			"group": "advanced"
+		},
+		"enableMobileFullscreen": {
+			"label": "Enable fullscreen styles on small screens",
+			"type": "boolean"
+		}
+	}
+}
