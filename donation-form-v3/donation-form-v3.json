@@ -1,0 +1,74 @@
+{
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "profile": {
+      "label": "Donations should go to",
+      "type": "select",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Automatic (Profile page or campaign)"
+        },
+        {
+          "value": "campaign",
+          "label": "Only the current campaign"
+        },
+        {
+          "value": "user",
+          "label": "Only the currently logged-in user"
+        }
+      ]
+    },
+    "detailsHeading": {
+      "label": "Details Heading",
+      "type": "text",
+      "group": "headings",
+      "help": "You can use the merge field [donation.amount] to display the amount chosen by the donor."
+    },
+    "paymentHeading": {
+      "label": "Payment Heading",
+      "type": "text",
+      "group": "headings",
+      "help": "You can use the merge field [donation.amount] to display the amount chosen by the donor."
+    },
+    "thankYouTitle": {
+      "group": "thankyou",
+      "label": "Thank You Title",
+      "type": "text"
+    },
+    "thankYouMessage": {
+      "group": "thankyou",
+      "label": "Thank You Message",
+      "type": "textarea",
+      "help": "You can use the following merge fields to personalise your thank you message: [donation.amount], [donation.firstName], [donation.lastName]"
+    },
+    "customShareUrl": {
+      "label": "Thank You Share URL",
+      "type": "text",
+      "group": "thankyou"
+    },
+    "existingCards": {
+      "label": "Allow saved cards",
+      "type": "boolean",
+      "group": "advanced"
+    },
+    "allCurrencies": {
+      "label": "Show full currency list",
+      "type": "boolean",
+      "group": "advanced"
+    },
+    "giftAid": {
+      "label": "Enable Gift Aid step",
+      "type": "boolean",
+      "group": "advanced"
+    },
+    "defaultDonationAmount": {
+      "label": "Select the second amount option by default",
+      "type": "boolean",
+      "group": "advanced"
+    }
+  }
+}

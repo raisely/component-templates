@@ -32,6 +32,7 @@
 			GivingLabelWithHearts,
 			MissingProviderNotice,
 			OptIn,
+			LegacyOptIn,
 			CurrencySelect,
 			PaymentDetails,
 			customAmountPlaceholder,
@@ -240,7 +241,10 @@
 								{!payments.onlySupportsPaypal && (
 									<StripePaymentElements />
 								)}
+								{/* The OptIn component renders the current OptIn */}
 								<OptIn />
+								{/* The LegacyOptIn will give you the older component */}
+								{/* <LegacyOptIn /> */}
 								<p className="donation-form__currency-message">
 									{amountMessageWithCurrency}
 								</p>
